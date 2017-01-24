@@ -4,7 +4,7 @@ set -ex
 
 UPSTREAM_VERSION=1.4.0
 UPSTREAM_PKG=electronic-wechat-v$UPSTREAM_VERSION.tar.gz
-VERSION=$UPSTREAM_VERSION-6
+VERSION=$UPSTREAM_VERSION-7
 TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
 
 if [ ! -f $UPSTREAM_PKG ]; then
@@ -24,12 +24,14 @@ cp bin/wechat.sh $TMP/usr/bin/wechat
 mkdir -p $TMP/usr/share/applications
 cat > $TMP/usr/share/applications/electronic-wechat.desktop <<EOF
 [Desktop Entry]
-Name=electronic-wechat
-Comment=Electronic WeChat
-Exec="/usr/bin/electronic-wechat"
-Terminal=false
+Version=1.0
 Type=Application
+Name=Electronic WeChat
+Comment=Electronic WeChat
 Icon=electronic-wechat
+Exec=electronic-wechat
+Terminal=false
+StartupNotify=true
 EOF
 
 declare -a sizes=("128x128" "16x16" "192x192" "20x20" "22x22" "24x24" "256x256" "32x32" "36x36" "40x40" "42x42" "48x48" "512x512" "64x64" "72x72" "8x8" "96x96")
