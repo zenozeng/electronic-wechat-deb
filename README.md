@@ -8,3 +8,7 @@ Tested on Debian Sid.
 
 - Desktop Entry: Electronic WeChat
 - CLI: wechat
+
+## Releases
+
+https://github.com/zenozeng/electronic-wechat-deb/releases
