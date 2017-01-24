@@ -1,9 +1,10 @@
 # electronic-wechat-deb
 
-## upstream
+Deb package for [Zhongyi Tong's](https://github.com/geeeeeeeeek) awesome [Electronic WeChat](https://github.com/geeeeeeeeek/electronic-wechat).
 
-https://github.com/geeeeeeeeek/electronic-wechat
+Tested on Debian Sid.
 
-## Ref
+## Usage
 
-https://www.debian.org/doc/debian-policy/ch-controlfields.html
+- Desktop Entry: Electronic WeChat
+- CLI: wechat
