@@ -4,7 +4,7 @@ set -ex
 
 UPSTREAM_VERSION=1.4.0
 UPSTREAM_PKG=electronic-wechat-v$UPSTREAM_VERSION.tar.gz
-VERSION=$UPSTREAM_VERSION-7
+VERSION=$UPSTREAM_VERSION-8
 TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
 
 if [ ! -f $UPSTREAM_PKG ]; then
@@ -29,7 +29,7 @@ Type=Application
 Name=Electronic WeChat
 Comment=Electronic WeChat
 Icon=electronic-wechat
-Exec=electronic-wechat
+Exec=wechat
 Terminal=false
 StartupNotify=true
 EOF
@@ -61,5 +61,4 @@ Homepage: https://github.com/geeeeeeeeek/electronic-wechat
 Description: A better WeChat on macOS and Linux. Built with Electron.
 EOF
 
-xdg-open $TMP
 dpkg-deb --build $TMP electronic-wechat-v$VERSION.deb
