@@ -11,12 +11,28 @@ if [ ! -f $UPSTREAM_PKG ]; then
     aria2c -c https://github.com/geeeeeeeeek/electronic-wechat/releases/download/v$UPSTREAM_VERSION/linux-x64.tar.gz -o $UPSTREAM_PKG
 fi
 
-# data
+# lib
 mkdir -p $TMP/usr/lib/electronic-wechat
-mkdir -p $TMP/usr/bin
 tar -zxvf $UPSTREAM_PKG -C $TMP/usr/lib/electronic-wechat/ --strip-components=1
 echo "Electronic WeChat version $VERSION (amd64)" > $TMP/usr/lib/electronic-wechat/PKG_VERSION
+
+
+# bin
+mkdir -p $TMP/usr/bin
 cp bin/wechat.sh $TMP/usr/bin/wechat
+
+# share
+mkdir -p $TMP/usr/share/applications
+cat > $TMP/usr/share/applications/electronic-wechat.desktop <<EOF
+[Desktop Entry]
+Name=electronic-wechat
+Comment=Electronic WeChat
+Exec="/usr/bin/electronic-wechat"
+Terminal=false
+Type=Application
+Icon=electronic-wechat
+EOF
+
 
 # control
 mkdir -p $TMP/DEBIAN
@@ -34,5 +50,7 @@ Maintainer: Zeno Zeng <zenoofzeng@gmail.com>
 Homepage: https://github.com/geeeeeeeeek/electronic-wechat
 Description: A better WeChat on macOS and Linux. Built with Electron.
 EOF
+
+
 
 dpkg-deb --build $TMP electronic-wechat-v$VERSION.deb
