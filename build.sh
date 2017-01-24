@@ -4,7 +4,7 @@ set -ex
 
 UPSTREAM_VERSION=1.4.0
 UPSTREAM_PKG=electronic-wechat-v$UPSTREAM_VERSION.tar.gz
-VERSION=$UPSTREAM_VERSION-2
+VERSION=$UPSTREAM_VERSION-5
 TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
 
 if [ ! -f $UPSTREAM_PKG ]; then

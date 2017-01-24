@@ -8,6 +8,6 @@ case $1 in
 
     # Default
     *)
-    /usr/lib/electronic-wechat/electronic-wechat
+    nohup /usr/lib/electronic-wechat/electronic-wechat > /dev/null 2>&1 &
     ;;
 esac
