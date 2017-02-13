@@ -2,10 +2,23 @@
 
 set -ex
 
+TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
+
+# Checkout Source Code
+wget https://github.com/geeeeeeeeek/electronic-wechat/archive/v2.0-rc1.tar.gz -O src.tar.gz
+mkdir -p src
+tar -zxvf src.tar.gz -C src --strip-components=1
+cd src
+npm install
+npm run build:linux64
+
+ls dist
+
+
+
 UPSTREAM_VERSION=1.4.0
 UPSTREAM_PKG=electronic-wechat-v$UPSTREAM_VERSION.tar.gz
 VERSION=$UPSTREAM_VERSION-8
-TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
 
 if [ ! -f $UPSTREAM_PKG ]; then
     wget https://github.com/geeeeeeeeek/electronic-wechat/releases/download/v$UPSTREAM_VERSION/linux-x64.tar.gz -o $UPSTREAM_PKG
