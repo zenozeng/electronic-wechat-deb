@@ -3,8 +3,6 @@ executorType: machine
 stages:
   build:
     workdir: /home/circleci/electronic-wechat-deb
-    artifacts:
-      - "dist"
     environment:
       - SOURCE_CODE: "https://github.com/geeeeeeeeek/electronic-wechat/archive/v2.0-rc1.tar.gz"
       - UPSTREAM_VERSION: "2.0.0"
@@ -30,3 +28,7 @@ stages:
         name: Build
         command: |
           ./build.sh
+
+      - type: artifacts-store
+        path: dist
+        destination: dist
