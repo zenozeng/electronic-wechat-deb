@@ -1,0 +1,11 @@
+version: 2
+executorType: machine
+stages:
+  build:
+    steps:
+      - type: checkout
+
+      - type: shell
+        name: Build
+        command: |
+          ./build.sh
