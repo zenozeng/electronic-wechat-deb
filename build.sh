@@ -4,9 +4,8 @@ set -ex
 
 TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
 
-UPSTREAM_VERSION=1.4.0
 UPSTREAM_PKG=electronic-wechat-v$UPSTREAM_VERSION.tar.gz
-VERSION=$UPSTREAM_VERSION-8
+VERSION=$UPSTREAM_VERSION-$CIRCLE_BUILD_NUM
 
 if [ ! -f $UPSTREAM_PKG ]; then
     wget https://github.com/geeeeeeeeek/electronic-wechat/releases/download/v$UPSTREAM_VERSION/linux-x64.tar.gz -o $UPSTREAM_PKG

@@ -3,6 +3,8 @@ executorType: machine
 stages:
   build:
     workdir: /home/circleci/electronic-wechat-deb
+    environment:
+      - UPSTREAM_VERSION: "2.0.0"
     steps:
       - type: checkout
 
@@ -18,6 +20,8 @@ stages:
           npm run build:linux64
 
           ls dist/electronic-wechat-linux-x64
+          cd ..
+          ls
 
       - type: shell
         name: Build
