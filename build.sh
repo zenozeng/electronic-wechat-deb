@@ -44,7 +44,6 @@ mkdir -p $TMP/DEBIAN
 cat > $TMP/DEBIAN/control <<EOF
 Package: electronic-wechat
 Version: $VERSION
-License: MIT
 Section: default
 Priority: extra
 Architecture: amd64
