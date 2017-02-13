@@ -6,6 +6,7 @@ TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
 
 VERSION=$UPSTREAM_VERSION-$CIRCLE_BUILD_NUM
 
+mkdir -p $TMP/usr/lib
 cp -rv src/dist/electronic-wechat-linux-x64 $TMP/usr/lib/electronic-wechat
 echo "Electronic WeChat version $VERSION (amd64)" > $TMP/usr/lib/electronic-wechat/PKG_VERSION
 
