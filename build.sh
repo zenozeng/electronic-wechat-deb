@@ -8,7 +8,7 @@ VERSION=$UPSTREAM_VERSION-8
 TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
 
 if [ ! -f $UPSTREAM_PKG ]; then
-    aria2c -c https://github.com/geeeeeeeeek/electronic-wechat/releases/download/v$UPSTREAM_VERSION/linux-x64.tar.gz -o $UPSTREAM_PKG
+    wget https://github.com/geeeeeeeeek/electronic-wechat/releases/download/v$UPSTREAM_VERSION/linux-x64.tar.gz -o $UPSTREAM_PKG
 fi
 
 # lib
