@@ -1,7 +1,7 @@
 version: 2
-executorType: docker
-containerInfo:
-  - image: node:7.5
+executorType: machine
+# containerInfo:
+#  - image: node:7.5
 stages:
   build:
     workdir: /home/circleci/electronic-wechat-deb
@@ -14,8 +14,8 @@ stages:
       - type: shell
         name: Deps
         command: |
-          apt-get update
-          apt-get --yes install imagemagick
+          sudo apt-get update
+          sudo apt-get --yes install imagemagick
 
       - type: shell
         name: Checkout Source Code
