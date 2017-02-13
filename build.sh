@@ -55,4 +55,4 @@ Description: A better WeChat on macOS and Linux. Built with Electron.
 EOF
 
 mkdir -p dist
-dpkg-deb --build $TMP dist/electronic-wechat-v$VERSION.deb
+dpkg-deb -Zxz -z9 --build $TMP dist/electronic-wechat-v$VERSION.deb
