@@ -12,6 +12,12 @@ stages:
       - type: checkout
 
       - type: shell
+        name: Deps
+        command: |
+          sudo apt-get update
+          sudo apt-get --yes install imagemagick
+
+      - type: shell
         name: Checkout Source Code
         command: |
           set -ex
