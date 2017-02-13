@@ -48,4 +48,4 @@ stages:
       - type: shell
         name: ghr
         command: |
-          ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME $UPSTREAM_VERSION-$CIRCLE_BUILD_NUM dist/
+          ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -draft $UPSTREAM_VERSION-$CIRCLE_BUILD_NUM dist/
