@@ -7,13 +7,15 @@ stages:
     workdir: /home/circleci/electronic-wechat-deb
     environment:
       SOURCE_CODE: "https://github.com/geeeeeeeeek/electronic-wechat/archive/v2.0-rc1.tar.gz"
-      UPSTREAM_VERSION: "2.0.0"
+      UPSTREAM_VERSION: "2.0.0-rc.1"
     steps:
       - type: checkout
 
       - type: shell
         name: Deps
         command: |
+          set -ex
+          go get -u github.com/tcnksm/ghr
           sudo apt-get update
           sudo apt-get --yes install imagemagick
 
@@ -28,6 +30,7 @@ stages:
       - type: shell
         name: build:linux64
         command: |
+          set -ex
           cd src
           npm install
           npm run build:linux64
@@ -35,8 +38,14 @@ stages:
       - type: shell
         name: Build Deb
         command: |
+          set -ex
           ./build.sh
 
       - type: artifacts-store
         path: dist
         destination: dist
+
+      - type: shell
+        name: ghr
+        command: |
+          ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $UPSTREAM_VERSION-$CIRCLE_BUILD_NUM dist/
