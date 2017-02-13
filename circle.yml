@@ -3,7 +3,10 @@ executorType: machine
 stages:
   build:
     workdir: /home/circleci/electronic-wechat-deb
+    artifacts:
+      - "dist"
     environment:
+      - SOURCE_CODE: "https://github.com/geeeeeeeeek/electronic-wechat/archive/v2.0-rc1.tar.gz"
       - UPSTREAM_VERSION: "2.0.0"
     steps:
       - type: checkout
@@ -12,7 +15,7 @@ stages:
         name: Checkout Source Code
         command: |
           set -ex
-          wget https://github.com/geeeeeeeeek/electronic-wechat/archive/v2.0-rc1.tar.gz -O src.tar.gz
+          wget $SOURCE_CODE  -O src.tar.gz
           mkdir -p src
           tar -zxvf src.tar.gz -C src --strip-components=1
           cd src

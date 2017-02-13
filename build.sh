@@ -4,16 +4,9 @@ set -ex
 
 TMP=$(mktemp -d /tmp/electronic-wechat-deb.XXXXXXXXXX)
 
-UPSTREAM_PKG=electronic-wechat-v$UPSTREAM_VERSION.tar.gz
 VERSION=$UPSTREAM_VERSION-$CIRCLE_BUILD_NUM
 
-if [ ! -f $UPSTREAM_PKG ]; then
-    wget https://github.com/geeeeeeeeek/electronic-wechat/releases/download/v$UPSTREAM_VERSION/linux-x64.tar.gz -o $UPSTREAM_PKG
-fi
-
-# lib
-mkdir -p $TMP/usr/lib/electronic-wechat
-tar -zxvf $UPSTREAM_PKG -C $TMP/usr/lib/electronic-wechat/ --strip-components=1
+cp -r src/dist/electronic-wechat-linux-x64 $TMP/usr/lib/electronic-wechat
 echo "Electronic WeChat version $VERSION (amd64)" > $TMP/usr/lib/electronic-wechat/PKG_VERSION
 
 # bin
@@ -61,4 +54,5 @@ Homepage: https://github.com/geeeeeeeeek/electronic-wechat
 Description: A better WeChat on macOS and Linux. Built with Electron.
 EOF
 
-dpkg-deb --build $TMP electronic-wechat-v$VERSION.deb
+mkdir -p dist
+dpkg-deb --build $TMP dist/electronic-wechat-v$VERSION.deb
