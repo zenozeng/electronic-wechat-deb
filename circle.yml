@@ -1,5 +1,7 @@
 version: 2
-executorType: machine
+executorType: docker
+containerInfo:
+  - image: debian:8
 stages:
   build:
     workdir: /home/circleci/electronic-wechat-deb
