@@ -24,16 +24,16 @@ stages:
           wget $SOURCE_CODE  -O src.tar.gz
           mkdir -p src
           tar -zxvf src.tar.gz -C src --strip-components=1
+
+      - type: shell
+        name: build:linux64
+        command: |
           cd src
           npm install
           npm run build:linux64
 
-          ls dist/electronic-wechat-linux-x64
-          cd ..
-          ls
-
       - type: shell
-        name: Build
+        name: Build Deb
         command: |
           ./build.sh
 
