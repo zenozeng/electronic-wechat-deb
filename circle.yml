@@ -6,8 +6,8 @@ stages:
   build:
     workdir: /home/circleci/electronic-wechat-deb
     environment:
-      SOURCE_CODE: "https://github.com/geeeeeeeeek/electronic-wechat/archive/v2.0-rc1.tar.gz"
-      UPSTREAM_VERSION: "2.0.0-rc.1"
+      SOURCE_CODE: "https://github.com/geeeeeeeeek/electronic-wechat/archive/V2.0.tar.gz"
+      UPSTREAM_VERSION: "2.0.0"
     steps:
       - type: checkout
 
