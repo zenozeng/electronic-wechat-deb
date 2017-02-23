@@ -20,6 +20,7 @@ cat > $TMP/usr/share/applications/electronic-wechat.desktop <<EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
+Categories=Network
 Name=Electronic WeChat
 Comment=Electronic WeChat
 Icon=electronic-wechat
